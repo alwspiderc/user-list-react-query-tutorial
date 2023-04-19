@@ -1,7 +1,9 @@
+import { UserList } from "./components/UserList/UserList"
+
 function App() {
   return (
     <div>
-      <p>Teste</p>
+      <UserList/>
     </div>
   )
 }
