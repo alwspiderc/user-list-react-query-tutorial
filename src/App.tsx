@@ -1,14 +1,17 @@
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from 'react-query/devtools';
-import { UserList } from "./components/UserList/UserList";
+import { ReactQueryDevtools } from "react-query/devtools";
+import "./index.css";
+import { CharacterList } from "./components/CharacterList/CharacterList";
 
 const queryClient = new QueryClient();
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div>
-        <UserList />
+      <div className="App">
+        <CharacterList />
       </div>
+
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

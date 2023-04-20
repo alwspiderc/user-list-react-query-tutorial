@@ -8,12 +8,6 @@ export const Container = styled.div`
   border: 1px solid;
   border-radius: 1rem;
   padding: 1rem;
-  background-color: #fff;
-`;
-
-export const Imagem = styled.img`
-  width: 100px;
-  border-radius: 1rem;
 `;
 
 export const Content = styled.div`
@@ -22,22 +16,8 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
-  h3 {
-    color: #141414;
-  }
 `;
 
-export const Button = styled.button`
+export const ButtonBox = styled.div`
   width: 100px;
-  height: 50px;
-  background-color: #141414;
-  font-weight: 700;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  
-  :hover {
-    background-color: #161616;
-  }
 `;
