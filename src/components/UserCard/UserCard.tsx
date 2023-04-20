@@ -11,7 +11,7 @@ export function UserCard({user, onClickEdit}: Props) {
     <Container>
       <Imagem src={user.avatar}/>
       <Content>
-      <h3>{user.name}</h3>
+      <h2>{user.name}</h2>
       <Button onClick={onClickEdit}>EDITAR</Button>
       </Content>
     </Container>

@@ -6,6 +6,15 @@ export const Container = styled.div`
   flex-direction: column;
 
   h1 {
+    padding-top: 20px;
+    padding-bottom: 10px;
     color: #fff;
+  }
+
+  .loading {
+    color: #fff;
+  }
+  .error {
+    color: red;
   }
 `;

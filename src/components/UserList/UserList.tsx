@@ -1,43 +1,32 @@
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { EditModal } from "../EditModal/EditModal";
 import { UserCard } from "../UserCard/UserCard";
 import { Container } from "./styles";
+import { User } from "../../models/UserModel";
+import { api } from "../../api/api";
 
-const users = [
-  {
-    id: "1",
-    createdAt: "Teste",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    name: "João Batista ",
-  },
-  {
-    id: "2",
-    createdAt: "Teste",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    name: "Karen Batista ",
-  },
-  {
-    id: "3",
-    createdAt: "Teste",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-    name: "Gilberto Batista ",
-  },
-];
 export function UserList() {
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const { data, isError, isLoading } = useQuery('user-list', api.getUsers);
+
   return (
     <Container>
       <h1>Lista de Usuários</h1>
-      {users.map((user) => {
-        return <UserCard user={user} onClickEdit={() => {}} />;
+      {isLoading && <h3 className="loading">Carregando...</h3>}
+      {isError && <h3 className="error">Ocorreu algum problema</h3>}
+      {data?.map((user) => {
+        return (
+          <UserCard user={user} onClickEdit={() => setSelectedUser(user)} />
+        );
       })}
-
-      <EditModal
-        user={users[0]}
-        show={false}
-        handleClose={() => {}}
-      />
+      {selectedUser && (
+        <EditModal
+          user={selectedUser}
+          show={!!selectedUser}
+          handleClose={() => setSelectedUser(null)}
+        />
+      )}
     </Container>
   );
 }
